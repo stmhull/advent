@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-from functools import reduce
 
 with open("day5_input.txt", "r") as f:
     lines = f.readlines()
@@ -26,6 +25,7 @@ def part1():
         max = (row * 8) + column if (row * 8) + column > max else max
     
     return max
+
 
 def part2():
     ids = [(findValue(seat[:7], range(0, 128)) * 8) + findValue(seat[7:], range(0, 9)) for seat in seats]
