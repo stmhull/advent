@@ -20,6 +20,7 @@ def findValue(seat, range):
 def getIds():
     return [(findValue(seat[:7], range(0, 128)) * 8) + findValue(seat[7:], range(0, 9)) for seat in seats]
 
+
 def part2():
     ids = getIds()
     id_range = {x for x in range(48, 819)}
