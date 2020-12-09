@@ -17,21 +17,14 @@ def findValue(seat, range):
     return findValue(seat[1:], range[(int(len(range) / 2)):])
 
 
-def part1():
-    max = 0
-    for seat in seats:
-        row = findValue(seat[:7], range(0, 128))
-        column = findValue(seat[7:], range(0, 9))
-        max = (row * 8) + column if (row * 8) + column > max else max
-    
-    return max
-
+def getIds():
+    return [(findValue(seat[:7], range(0, 128)) * 8) + findValue(seat[7:], range(0, 9)) for seat in seats]
 
 def part2():
-    ids = [(findValue(seat[:7], range(0, 128)) * 8) + findValue(seat[7:], range(0, 9)) for seat in seats]
+    ids = getIds()
     id_range = {x for x in range(48, 819)}
-    return id_range.difference(ids)
+    return list(id_range.difference(ids))[0]
 
 
-print("part 1:", part1())
+print("part 1:", max(getIds()))
 print("part 2:", part2())
